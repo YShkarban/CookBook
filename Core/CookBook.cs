@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class User
+    public class CookBook
     {
-        public CookBook CookBookInstance { get; private set; }
+        public List<Recipe> ListOfRecipes { get; private set; }
 
-        public  User()
+        public CookBook()
         {
-            CookBookInstance = new CookBook();
+            ListOfRecipes = new List<Recipe>();
         }
     }
 }

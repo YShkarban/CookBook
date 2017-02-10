@@ -6,9 +6,11 @@ namespace CoreUnitTest
     [TestClass]
     public class CoreUnitTest
     {
+        /*
         [TestMethod]
         public void TestMethod1()
         {
         }
+        */
     }
 }
