@@ -6,18 +6,18 @@ namespace Core
     public interface IRecipe
     {
         string title { get; set; }
-        Complexity complexity { get; set; }
-        //TODO: Create rating class
-        int rating { get; set; }
-        //TODO: Create type class
-        string type { get; set; } //vegeterian, normal or whatever
-        int yield { get; set; }
-        //TODO: Create nutrition class
-        string nutrition { get; set; }
+        ComplexityEnum complexity { get; set; }
+      
+        RatingEnum rating { get; set; }
 
-        //TODO: Create language class  with default value = "en"
-        string recipeLanguage { get; set; }
+        MealTypeEnum mealtype { get; set; } //breakfast, desserts, lunch
+       
+        DishType dishtype { get; set; } //salads, soup
+       
+        CookingStyle cookingstyle { get; set; } //vegan, vegeterian, bbq, snacks, diabetic
 
+        uint yield { get; set; }
+        
         CookingTime cookingTime { get; set; }
         CookingTime preparationTime { get; set; }
         CookingTime totalTime { get; set; } // cookingTime + preparationTime
@@ -27,8 +27,6 @@ namespace Core
         //TODO: Create classes description
         string description { get; set; }
 
-        //TODO: Create class comment
-        List<string> comment { get; set; }
         //TODO: Change type to URL, URI or UriBuilder
         string source { get; set; }
         string videoUrl { get; set; }

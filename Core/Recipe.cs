@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public enum Complexity { VeryEasy = 1, Easy, Normal, Hard, VeryHard };
-
     //TODO: Create test for this class
     public class Recipe: IRecipe
     {
         public string title { get; set; }
-        public Complexity complexity { get; set; }
-        public int rating { get; set; }
-        public string type { get; set; }
-        public int yield { get; set; }
-        public string nutrition { get; set; }
+        public ComplexityEnum complexity { get; set; }
+        public RatingEnum rating { get; set; }
+        public MealTypeEnum mealtype { get; set; }
+        public DishType dishtype { get; set; }
+        public CookingStyle cookingstyle { get; set; }
 
+        public uint yield { get; set; }
+     
         public string recipeLanguage { get; set; }
 
         public CookingTime cookingTime { get; set; }
@@ -27,13 +27,12 @@ namespace Core
         public List<string> ingredientsList { get; set; }
         public string description { get; set; }
 
-        public List<string> comment { get; set; }
         public string source { get; set; }
         public string videoUrl { get; set; }
 
         public Recipe()
         {
-            complexity = Complexity.Normal;
+            complexity = ComplexityEnum.Normal;
             cookingTime = new CookingTime();
             preparationTime = new CookingTime();
             totalTime = cookingTime + preparationTime;
