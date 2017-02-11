@@ -37,5 +37,13 @@ namespace Core
             Minutes = minutes;
             Hours = hours;
         }
+
+        //TODO: write tests for this method
+        public static CookingTime operator +(CookingTime c1, CookingTime c2)
+        {
+            var totalMinutes = c1.Minutes + c2.Minutes;
+            var totalHours = c1.Hours + c2.Hours;
+            return new CookingTime(totalMinutes, totalHours);
+        }
     }
 }
