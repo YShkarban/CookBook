@@ -69,5 +69,82 @@ namespace CoreUnitTest
             //Arrange
             CookingTime cookingTime = new CookingTime(125, -2);
         }
+
+        [TestMethod]
+        public void ShouldTotalTimeEqualsZeroWhenAddition()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime();
+            CookingTime preparationTime = new CookingTime();
+            CookingTime totalTime;
+
+            //act
+            totalTime = cookingTime + preparationTime;
+
+            //Assert            
+            Assert.AreEqual(0, totalTime.Minutes);
+            Assert.AreEqual(0, totalTime.Hours);
+        }
+
+        [TestMethod]
+        public void ShouldIncrementHourWhenAddition()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(50);
+            CookingTime preparationTime = new CookingTime(50);
+            CookingTime totalTime;
+
+            //act
+            totalTime = cookingTime + preparationTime;
+
+            //Assert            
+            Assert.AreEqual(40, totalTime.Minutes);
+            Assert.AreEqual(1, totalTime.Hours);
+        }
+
+        [TestMethod]
+        public void ShouldIncrementHourWhenAdditionV2()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(40);
+            CookingTime preparationTime = new CookingTime(20);
+            CookingTime totalTime;
+
+            //act
+            totalTime = cookingTime + preparationTime;
+
+            //Assert            
+            Assert.AreEqual(0, totalTime.Minutes);
+            Assert.AreEqual(1, totalTime.Hours);
+        }
+
+        [TestMethod]
+        public void ShouldIncrementHourWhenAdditionV3()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(70);
+            CookingTime preparationTime = new CookingTime(90);
+            CookingTime totalTime;
+
+            //act
+            totalTime = cookingTime + preparationTime;
+
+            //Assert            
+            Assert.AreEqual(40, totalTime.Minutes);
+            Assert.AreEqual(2, totalTime.Hours);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldThrowArgumentException()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(50);
+            CookingTime preparationTime = new CookingTime(50,-2);
+            CookingTime totalTime;
+
+            //act
+            totalTime = cookingTime + preparationTime;
+        }
     }
 }
