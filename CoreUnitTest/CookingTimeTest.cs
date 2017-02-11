@@ -146,5 +146,48 @@ namespace CoreUnitTest
             //act
             totalTime = cookingTime + preparationTime;
         }
+
+        [TestMethod]
+        public void ShouldReturnStringHoursAndMinutes()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(2, 2);
+
+            //Assert            
+            Assert.AreEqual("2h 2m", cookingTime.ToString());
+           
+        }
+
+        [TestMethod]
+        public void ShouldReturnStringHours()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(0, 2);
+
+            //Assert            
+            Assert.AreEqual("2h", cookingTime.ToString());
+
+        }
+
+        [TestMethod]
+        public void ShouldReturnStringMinutes()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(2);
+
+            //Assert            
+            Assert.AreEqual("2m", cookingTime.ToString());
+
+        }
+
+        [TestMethod]
+        public void ShouldReturnEmptyString()
+        {
+            //Arrange
+            CookingTime cookingTime = new CookingTime(0);
+
+            //Assert            
+            Assert.AreEqual("", cookingTime.ToString());
+        }
     }
 }

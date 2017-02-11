@@ -62,6 +62,5 @@ namespace Core
 
             return "";
         }
-
     }
 }
