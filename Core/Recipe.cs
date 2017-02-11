@@ -35,36 +35,43 @@ namespace Core
 
         public override bool Equals(object obj)
         {
-            if (obj is Recipe)
+            if (obj != null && obj is Recipe)
             {
                 Recipe other = obj as Recipe;
 
-                if (this.title != other.title)
+                if (title != other.title
+                    || complexity != other.complexity
+                    || cookingStyle != other.cookingStyle
+                    || dishType != other.dishType
+                    || mealType != other.mealType
+                    || preparationTime != other.preparationTime
+                    || rating != other.rating
+                    || source != other.source
+                    || totalTime != other.totalTime
+                    || videoUrl != other.videoUrl
+                    || yield != other.yield
+                    || cookingTime != other.cookingTime)
+                {
                     return false;
-                if (this.complexity != other.complexity)
-                    return false;
-                if (this.cookingStyle != other.cookingStyle)
-                    return false;
-                if (this.dishType != other.dishType)
-                    return false;
-                if (this.ingredientsList.Count != other.ingredientsList.Count)
-	                return false;
-                if (this.mealType != other.mealType)
-                    return false;
-                if (this.preparationTime != other.preparationTime)
-                    return false;
-                if (this.rating != other.rating)
-                    return false;
-                if (this.source != other.source)
-                    return false;
-                if (this.totalTime != other.totalTime)
-                   return false;
-                if (this.videoUrl != other.videoUrl)
-                    return false;
-                if (this.yield != other.yield)
-                    return false;
-                if (this.cookingTime != other.cookingTime)
-                    return false;
+                }
+
+                //compare ingridient list
+                if (ingredientsList.Count == other.ingredientsList.Count)
+                {
+                    if (ingredientsList.Count == 0 && other.ingredientsList.Count == 0)
+                    {
+                        return true;
+                    }
+
+                    //check each value 
+                    for (var i = 0; i < ingredientsList.Count; i++)
+                    {
+                        if (ingredientsList.ElementAt(i) != other.ingredientsList.ElementAt(i))
+                        {
+                            return false;
+                        }
+                    }
+                }
                 return true;
             }
             return false;
