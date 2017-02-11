@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CookBook.cs" />
     <Compile Include="CookingTime.cs" />
+    <Compile Include="IRecipe.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="RecipeManager.cs" />
     <Compile Include="User.cs" />
