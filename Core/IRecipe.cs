@@ -6,15 +6,15 @@ namespace Core
     public interface IRecipe
     {
         string title { get; set; }
-        ComplexityEnum complexity { get; set; }
+        Complexity complexity { get; set; }
       
-        RatingEnum rating { get; set; }
+        Rating rating { get; set; }
 
-        MealTypeEnum mealtype { get; set; } //breakfast, desserts, lunch
+        MealType mealType { get; set; } //breakfast, desserts, lunch
        
-        DishType dishtype { get; set; } //salads, soup
+        DishType dishType { get; set; } //salads, soup
        
-        CookingStyle cookingstyle { get; set; } //vegan, vegeterian, bbq, snacks, diabetic
+        CookingStyle cookingStyle { get; set; } //vegan, vegeterian, bbq, snacks, diabetic
 
         uint yield { get; set; }
         

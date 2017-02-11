@@ -11,7 +11,6 @@ namespace CookBook
     {
         static void Main(string[] args)
         {
-          
         }
     }
 }

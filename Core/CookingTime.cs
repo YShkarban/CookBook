@@ -62,5 +62,16 @@ namespace Core
 
             return "";
         }
+
+        public override bool Equals(object other)
+        {
+            if (other is CookingTime)
+            {
+                CookingTime otherObj = other as CookingTime;
+                if (otherObj.Hours == this.Hours && otherObj.Minutes == this.Minutes)
+                    return true;
+            }
+            return false;
+        }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public enum ComplexityEnum { VeryEasy = 1, Easy, Normal, Hard, VeryHard };
+    public enum Complexity {NotAssigned, VeryEasy, Easy, Normal, Hard, VeryHard };
 
-    public enum RatingEnum { Deplorable = 1, Tasty, Delicious };
+    public enum Rating { NotAssigned, Deplorable, Tasty, Delicious };
 
-    public enum MealTypeEnum { Breakfast = 1, Lunch, Dinner, Desserts};
+    public enum MealType { Breakfast = 1, Lunch, Dinner, Desserts};
 
-    public enum DishTypeEnum { Soup, Salads, FastFood };
+    public enum DishType { Soup, Salads, FastFood };
 
-    public enum CookingStyleEnum { Vegan, Vegeterian , Diabetic, Meat};
+    public enum CookingStyle { Vegan, Vegeterian , Diabetic, Meat};
 }
