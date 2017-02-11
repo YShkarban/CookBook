@@ -73,5 +73,16 @@ namespace Core
             }
             return false;
         }
+
+        public static bool operator ==(CookingTime lhs, CookingTime rhs)
+        {
+            return Equals(lhs, rhs);
+        }
+
+        public static bool operator !=(CookingTime lhs, CookingTime rhs)
+        {
+            return !Equals(lhs, rhs);
+        }
+
     }
 }

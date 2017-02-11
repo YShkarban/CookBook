@@ -30,6 +30,44 @@ namespace Core
 
         public Recipe()
         {
+
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Recipe)
+            {
+                Recipe other = obj as Recipe;
+
+                if (this.title != other.title)
+                    return false;
+                if (this.complexity != other.complexity)
+                    return false;
+                if (this.cookingStyle != other.cookingStyle)
+                    return false;
+                if (this.dishType != other.dishType)
+                    return false;
+                if (this.ingredientsList.Count != other.ingredientsList.Count)
+	                return false;
+                if (this.mealType != other.mealType)
+                    return false;
+                if (this.preparationTime != other.preparationTime)
+                    return false;
+                if (this.rating != other.rating)
+                    return false;
+                if (this.source != other.source)
+                    return false;
+                if (this.totalTime != other.totalTime)
+                   return false;
+                if (this.videoUrl != other.videoUrl)
+                    return false;
+                if (this.yield != other.yield)
+                    return false;
+                if (this.cookingTime != other.cookingTime)
+                    return false;
+                return true;
+            }
+            return false;
         }
     }
 }
