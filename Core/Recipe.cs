@@ -50,7 +50,8 @@ namespace Core
                     || totalTime != other.totalTime
                     || videoUrl != other.videoUrl
                     || yield != other.yield
-                    || cookingTime != other.cookingTime)
+                    || cookingTime != other.cookingTime
+                    || description != other.description)
                 {
                     return false;
                 }
