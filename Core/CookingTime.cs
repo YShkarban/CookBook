@@ -38,12 +38,30 @@ namespace Core
             Hours = hours;
         }
 
-        //TODO: write tests for this method
         public static CookingTime operator +(CookingTime c1, CookingTime c2)
         {
             var totalMinutes = c1.Minutes + c2.Minutes;
             var totalHours = c1.Hours + c2.Hours;
             return new CookingTime(totalMinutes, totalHours);
         }
+      
+        public override string ToString()
+        {
+            if(Hours > 0 && Minutes > 0)
+            {
+                return Hours + "h " + Minutes + "m";
+            }
+            else if(Hours == 0 && Minutes > 0)
+            {
+                return Minutes + "m";
+            } 
+            else if(Hours > 0 && Minutes == 0)
+            {
+                return Hours + "h";
+            }
+
+            return "";
+        }
+
     }
 }
