@@ -257,7 +257,7 @@ namespace CoreUnitTest
         public void ShouldSetVideoUrlThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetVideoUrl(null);
         }
 
         [TestMethod]
@@ -265,7 +265,7 @@ namespace CoreUnitTest
         public void ShouldSetEmptyVideoUrlThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetVideoUrl("");
         }
 
         [TestMethod]
@@ -287,7 +287,7 @@ namespace CoreUnitTest
         public void ShouldSetSourceThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetSource(null);
         }
 
         [TestMethod]
@@ -295,7 +295,7 @@ namespace CoreUnitTest
         public void ShouldSetEmptySourceThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetSource("");
         }
 
         [TestMethod]
