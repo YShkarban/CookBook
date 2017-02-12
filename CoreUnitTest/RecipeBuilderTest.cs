@@ -361,5 +361,88 @@ namespace CoreUnitTest
             //assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShouldNotInitializeListThrowException()
+        {
+            //act
+            builder.AddIngridient(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldEmptyListThrowException()
+        {
+            //act
+            builder.AddIngridient("");
+        }
+
+        [TestMethod]
+        public void ShouldInitializeIngridientList()
+        {
+            //Act
+            builder.AddIngridient("ingridient");
+
+            //Assert
+            Assert.IsNotNull(builder.GetResult().ingredientsList);
+        }
+
+        [TestMethod]
+        public void ShouldAddIngridient()
+        {
+            //Act
+            builder.AddIngridient("ingridient");
+            var count = builder.GetResult().ingredientsList.Count;
+
+            //Assert
+            Assert.AreEqual(1, count);
+            Assert.IsTrue(builder.GetResult().ingredientsList.Contains("ingridient"));
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShouldNotInitializeRemoveIngridientThrowException()
+        {
+            //act
+            builder.RemoveIngridient(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldRemoveEmptyListThrowException()
+        {
+            //act
+            builder.RemoveIngridient("");
+        }
+
+        [TestMethod]
+        public void ShouldReturnInitializeList()
+        {
+            //Act
+
+            //hack
+            builder.GetResult().ingredientsList = null;
+            builder.RemoveIngridient("123");
+
+            //Assert
+            Assert.IsNull(builder.GetResult().ingredientsList);
+        }
+
+        [TestMethod]
+        public void ShouldRemoveIngridient()
+        {
+            //Arrange
+            builder.AddIngridient("ingridient");
+
+            //Act
+            builder.RemoveIngridient("ingridient");
+            var count = builder.GetResult().ingredientsList.Count;
+
+            //Assert
+            Assert.AreEqual(0, count);
+            //Assert.IsNotNull(builder.GetResult().ingredientsList.Contains(""));
+        }
     }
 }
