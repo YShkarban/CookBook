@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core;
 
@@ -316,6 +317,46 @@ namespace CoreUnitTest
         public void ShouldSetYield()
         {
             //act
+            result = builder.GetResult();
+
+            //assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+
+        [TestMethod]
+        public void ShouldCreateCustomRecipe()
+        {
+            //Arrange
+            expectedResult.title = "Steak"; 
+            expectedResult.complexity = Complexity.Hard;
+            expectedResult.cookingStyle = CookingStyle.Meat;
+            expectedResult.cookingTime = new CookingTime(10);
+            expectedResult.preparationTime = new CookingTime(10);
+            expectedResult.totalTime = expectedResult.cookingTime + expectedResult.preparationTime;
+            expectedResult.description = "Delicious beef steak with papper sause";
+            expectedResult.dishType = DishType.FastFood;
+            expectedResult.ingredientsList = new List<string>();
+            expectedResult.ingredientsList.Add("Steak");
+            expectedResult.ingredientsList.Add("Garlic");
+            expectedResult.rating = Rating.Delicious;
+            expectedResult.yield = 1;
+
+            //act
+            builder.SetTitle("Pepper Steak");
+            builder.SetTitle("Steak");
+            builder.SetComplexity(Complexity.Hard);
+            builder.SetCookingStyle(CookingStyle.Meat);
+            builder.SetPreparationTime(new CookingTime(10));
+            builder.SetCookingTime(new CookingTime(10));
+            builder.SetDescription("Delicious beef steak with papper sause");
+            builder.SetDishType(DishType.FastFood);
+            List<string> ingridients = new List<string>();
+            ingridients.Add("Steak");
+            ingridients.Add("Garlic");
+            builder.SetIngridientList(ingridients);
+            builder.SetRating(Rating.Delicious);
+            builder.SetYield(1);
             result = builder.GetResult();
 
             //assert
