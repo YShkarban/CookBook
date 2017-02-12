@@ -34,6 +34,8 @@ namespace Core
 
         void SetVideoUrl(string videoUrl);
 
+        void AddIngridient(string ingridient);
+
         Recipe GetResult();
     }
 }

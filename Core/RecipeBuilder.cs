@@ -59,7 +59,6 @@ namespace Core
         public void SetDescription(string description)
         {
             if (description == null) throw new ArgumentNullException();
-
             _recipe.description = description;
         }
 
@@ -126,6 +125,18 @@ namespace Core
         {
             //TODO: Should we check for 0????
             _recipe.yield = yield;
+        }
+
+        public void AddIngridient(string ingridient)
+        {
+            //TODO: make things here
+            //1. Check if list is null, if it is create new one
+
+            //2. checked if list has this element, if it is than skip
+            
+             //3 check if ingridient is valid (null, "")
+
+            //ingridientList,add(ingridient)
         }
     }
 }
