@@ -56,7 +56,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CookingTimeTest.cs" />
     <Compile Include="RecipeBuilderTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="CookBookTest.cs" />
+    <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
