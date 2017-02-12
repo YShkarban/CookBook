@@ -257,7 +257,7 @@ namespace CoreUnitTest
         public void ShouldSetVideoUrlThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetVideoUrl(null);
         }
 
         [TestMethod]
@@ -265,7 +265,7 @@ namespace CoreUnitTest
         public void ShouldSetEmptyVideoUrlThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetVideoUrl("");
         }
 
         [TestMethod]
@@ -287,7 +287,7 @@ namespace CoreUnitTest
         public void ShouldSetSourceThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetSource(null);
         }
 
         [TestMethod]
@@ -295,17 +295,17 @@ namespace CoreUnitTest
         public void ShouldSetEmptySourceThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetSource("");
         }
 
         [TestMethod]
         public void ShouldSetCustomSource()
         {
             //Arrange            
-            expectedResult.videoUrl = "Test";
+            expectedResult.source = "Test";
 
             //act
-            builder.SetVideoUrl("Test");
+            builder.SetSource("Test");
             result = builder.GetResult();
 
             //assert
@@ -400,6 +400,19 @@ namespace CoreUnitTest
             Assert.IsTrue(builder.GetResult().ingredientsList.Contains("ingridient"));
         }
 
+        [TestMethod]
+        public void ShouldNotBeEqualIFIsNotRecipe()
+        {
+            //Arrange
+            User user = new User();
+
+            //act
+            result = builder.GetResult();
+
+            //assert
+            Assert.IsFalse(result.Equals(user));
+        }
+
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -443,6 +456,20 @@ namespace CoreUnitTest
             //Assert
             Assert.AreEqual(0, count);
             //Assert.IsNotNull(builder.GetResult().ingredientsList.Contains(""));
+        }
+
+        [TestMethod]
+        public void ShouldIngridientListNotEqual()
+        {
+           //Arrange
+            expectedResult.ingredientsList.Add("meat");
+
+            //act
+            result = builder.GetResult();
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.AreNotEqual(expectedResult, result);
         }
     }
 }

@@ -189,5 +189,17 @@ namespace CoreUnitTest
             //Assert            
             Assert.AreEqual("", cookingTime.ToString());
         }
+
+
+        [TestMethod]
+        public void ShouldNotBeEqual()
+        {
+            //Arrange
+            CookingTime cookingTime1 = new CookingTime(0);
+            CookingTime cookingTime2 = new CookingTime(5);
+
+            //Assert            
+            Assert.AreNotEqual(cookingTime1, cookingTime2);
+        }
     }
 }
