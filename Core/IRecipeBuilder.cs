@@ -36,6 +36,8 @@ namespace Core
 
         void AddIngridient(string ingridient);
 
+        void RemoveIngridient(string ingridient);
+
         Recipe GetResult();
     }
 }

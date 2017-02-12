@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core;
 
@@ -29,7 +30,6 @@ namespace CoreUnitTest
 
             expectedResult = defaultRecipe;
             builder = new RecipeBuilder("Sandwitch with salmon");
-            
         }
 
         [TestMethod]
@@ -257,7 +257,7 @@ namespace CoreUnitTest
         public void ShouldSetVideoUrlThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetVideoUrl(null);
         }
 
         [TestMethod]
@@ -265,7 +265,7 @@ namespace CoreUnitTest
         public void ShouldSetEmptyVideoUrlThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetVideoUrl("");
         }
 
         [TestMethod]
@@ -287,7 +287,7 @@ namespace CoreUnitTest
         public void ShouldSetSourceThrowException()
         {
             //act
-            builder.SetTitle(null);
+            builder.SetSource(null);
         }
 
         [TestMethod]
@@ -295,17 +295,17 @@ namespace CoreUnitTest
         public void ShouldSetEmptySourceThrowException()
         {
             //act
-            builder.SetTitle("");
+            builder.SetSource("");
         }
 
         [TestMethod]
         public void ShouldSetCustomSource()
         {
             //Arrange            
-            expectedResult.videoUrl = "Test";
+            expectedResult.source = "Test";
 
             //act
-            builder.SetVideoUrl("Test");
+            builder.SetSource("Test");
             result = builder.GetResult();
 
             //assert
@@ -320,6 +320,184 @@ namespace CoreUnitTest
 
             //assert
             Assert.AreEqual(expectedResult, result);
+        }
+
+
+        [TestMethod]
+        public void ShouldCreateCustomRecipe()
+        {
+            //Arrange
+            expectedResult.title = "Steak"; 
+            expectedResult.complexity = Complexity.Hard;
+            expectedResult.cookingStyle = CookingStyle.Meat;
+            expectedResult.cookingTime = new CookingTime(10);
+            expectedResult.preparationTime = new CookingTime(10);
+            expectedResult.totalTime = expectedResult.cookingTime + expectedResult.preparationTime;
+            expectedResult.description = "Delicious beef steak with papper sause";
+            expectedResult.dishType = DishType.FastFood;
+            expectedResult.ingredientsList = new List<string>();
+            expectedResult.ingredientsList.Add("Steak");
+            expectedResult.ingredientsList.Add("Garlic");
+            expectedResult.rating = Rating.Delicious;
+            expectedResult.yield = 1;
+
+            //act
+            builder.SetTitle("Pepper Steak");
+            builder.SetTitle("Steak");
+            builder.SetComplexity(Complexity.Hard);
+            builder.SetCookingStyle(CookingStyle.Meat);
+            builder.SetPreparationTime(new CookingTime(10));
+            builder.SetCookingTime(new CookingTime(10));
+            builder.SetDescription("Delicious beef steak with papper sause");
+            builder.SetDishType(DishType.FastFood);
+            List<string> ingridients = new List<string>();
+            ingridients.Add("Steak");
+            ingridients.Add("Garlic");
+            builder.SetIngridientList(ingridients);
+            builder.SetRating(Rating.Delicious);
+            builder.SetYield(1);
+            result = builder.GetResult();
+
+            //assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShouldNotInitializeListThrowException()
+        {
+            //act
+            builder.AddIngridient(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldEmptyListThrowException()
+        {
+            //act
+            builder.AddIngridient("");
+        }
+
+        [TestMethod]
+        public void ShouldInitializeIngridientList()
+        {
+            //Act
+            builder.AddIngridient("ingridient");
+
+            //Assert
+            Assert.IsNotNull(builder.GetResult().ingredientsList);
+        }
+
+        [TestMethod]
+        public void ShouldAddIngridient()
+        {
+            //Act
+            builder.AddIngridient("ingridient");
+            var count = builder.GetResult().ingredientsList.Count;
+
+            //Assert
+            Assert.AreEqual(1, count);
+            Assert.IsTrue(builder.GetResult().ingredientsList.Contains("ingridient"));
+        }
+
+        [TestMethod]
+        public void ShouldNotBeEqualIFIsNotRecipe()
+        {
+            //Arrange
+            User user = new User();
+
+            //act
+            result = builder.GetResult();
+
+            //assert
+            Assert.IsFalse(result.Equals(user));
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShouldNotInitializeRemoveIngridientThrowException()
+        {
+            //act
+            builder.RemoveIngridient(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldRemoveEmptyListThrowException()
+        {
+            //act
+            builder.RemoveIngridient("");
+        }
+
+        [TestMethod]
+        public void ShouldReturnInitializeList()
+        {
+            //Act
+
+            //hack
+            builder.GetResult().ingredientsList = null;
+            builder.RemoveIngridient("123");
+
+            //Assert
+            Assert.IsNull(builder.GetResult().ingredientsList);
+        }
+
+        [TestMethod]
+        public void ShouldRemoveIngridient()
+        {
+            //Arrange
+            builder.AddIngridient("ingridient");
+
+            //Act
+            builder.RemoveIngridient("ingridient");
+            var count = builder.GetResult().ingredientsList.Count;
+
+            //Assert
+            Assert.AreEqual(0, count);
+            //Assert.IsNotNull(builder.GetResult().ingredientsList.Contains(""));
+        }
+
+        [TestMethod]
+        public void ShouldIngridientListNotEqual()
+        {
+           //Arrange
+            expectedResult.ingredientsList.Add("meat");
+
+            //act
+            result = builder.GetResult();
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.AreNotEqual(expectedResult, result);
+        }
+
+        [TestMethod]
+        public void ShouldAddIngridientToNotIntitializedList()
+        {
+            //Arrange
+            builder.GetResult().ingredientsList = null;
+
+            //act
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.IsNotNull(builder.GetResult().ingredientsList);
+            Assert.AreEqual(builder.GetResult().ingredientsList.Count, 1);
+        }
+
+        [TestMethod]
+        public void ShouldNotAddExistingIngridient()
+        {
+            //Arrange
+
+            //act
+            builder.AddIngridient("garlic");
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.AreEqual(builder.GetResult().ingredientsList.Count, 1);
+            Assert.IsTrue(builder.GetResult().ingredientsList.Contains("garlic"));
         }
     }
 }

@@ -15,11 +15,14 @@ namespace Core
             ListOfRecipes = new List<Recipe>();
         }
 
-        bool AddRecipe(Recipe recipe)
+        public bool AddRecipe(Recipe recipe)
         {
             try
             {
-                //TODO: Throw exception if this recipe exists
+                if (ListOfRecipes.Contains(recipe))
+                {
+                    throw new ArgumentException("This recipe already exists on the list");
+                }
                 ListOfRecipes.Add(recipe);
             }
             catch(Exception e)
@@ -29,11 +32,15 @@ namespace Core
             }
             return true;
         }
-        bool RemoveRecipe(Recipe recipe)
+
+        public bool RemoveRecipe(Recipe recipe)
         {
             try
             {
-                //TODO: Check if Recipe is on the list
+                if(!ListOfRecipes.Contains(recipe))
+                {
+                    throw new ArgumentException("Recipe does not exists on the list");
+                }
                 ListOfRecipes.Remove(recipe);
             }
             catch (Exception e)
@@ -43,6 +50,5 @@ namespace Core
             }
             return true;
         }
-
     }
 }
