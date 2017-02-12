@@ -471,5 +471,33 @@ namespace CoreUnitTest
             //assert
             Assert.AreNotEqual(expectedResult, result);
         }
+
+        [TestMethod]
+        public void ShouldAddIngridientToNotIntitializedList()
+        {
+            //Arrange
+            builder.GetResult().ingredientsList = null;
+
+            //act
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.IsNotNull(builder.GetResult().ingredientsList);
+            Assert.AreEqual(builder.GetResult().ingredientsList.Count, 1);
+        }
+
+        [TestMethod]
+        public void ShouldNotAddExistingIngridient()
+        {
+            //Arrange
+
+            //act
+            builder.AddIngridient("garlic");
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.AreEqual(builder.GetResult().ingredientsList.Count, 1);
+            Assert.IsTrue(builder.GetResult().ingredientsList.Contains("garlic"));
+        }
     }
 }
