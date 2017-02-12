@@ -30,7 +30,6 @@ namespace CoreUnitTest
 
             expectedResult = defaultRecipe;
             builder = new RecipeBuilder("Sandwitch with salmon");
-            
         }
 
         [TestMethod]
