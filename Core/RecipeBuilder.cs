@@ -27,7 +27,6 @@ namespace Core
 
         public Recipe GetResult()
         {
-            if (_recipe == null) throw new NullReferenceException();
             return _recipe;
         }
 
