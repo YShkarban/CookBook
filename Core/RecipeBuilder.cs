@@ -129,14 +129,37 @@ namespace Core
 
         public void AddIngridient(string ingridient)
         {
-            //TODO: make things here
-            //1. Check if list is null, if it is create new one
+            if (ingridient == null) throw new ArgumentNullException();
+            if (ingridient == "") throw new ArgumentException();
 
-            //2. checked if list has this element, if it is than skip
-            
-             //3 check if ingridient is valid (null, "")
+            if (_recipe.ingredientsList == null)
+            {
+                _recipe.ingredientsList = new List<string>();
+            }
 
-            //ingridientList,add(ingridient)
+            if (_recipe.ingredientsList.Contains(ingridient))
+            {
+                return;
+            }
+
+            _recipe.ingredientsList.Add(ingridient);
+
+        }
+
+        public void RemoveIngridient(string ingridient)
+        {
+            if (ingridient == null) throw new ArgumentNullException();
+            if (ingridient == "") throw new ArgumentException();
+
+            if(_recipe.ingredientsList == null)
+            {
+                return;
+            }
+
+            if (_recipe.ingredientsList.Contains(ingridient))
+            {
+                _recipe.ingredientsList.Remove(ingridient);
+            }
         }
     }
 }
