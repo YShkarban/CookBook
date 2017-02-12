@@ -302,10 +302,10 @@ namespace CoreUnitTest
         public void ShouldSetCustomSource()
         {
             //Arrange            
-            expectedResult.videoUrl = "Test";
+            expectedResult.source = "Test";
 
             //act
-            builder.SetVideoUrl("Test");
+            builder.SetSource("Test");
             result = builder.GetResult();
 
             //assert
@@ -361,5 +361,34 @@ namespace CoreUnitTest
             //assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [TestMethod]
+        public void ShouldNotBeEqualIFIsNotRecipe()
+        {
+            //Arrange
+            User user = new User();
+
+            //act
+            result = builder.GetResult();
+
+            //assert
+            Assert.IsFalse(result.Equals(user));
+        }
+
+
+        [TestMethod]
+        public void ShouldIngridientListNotEqual()
+        {
+           //Arrange
+            expectedResult.ingredientsList.Add("meat");
+
+            //act
+            result = builder.GetResult();
+            builder.AddIngridient("garlic");
+
+            //assert
+            Assert.AreNotEqual(expectedResult, result);
+        }
+
     }
 }
