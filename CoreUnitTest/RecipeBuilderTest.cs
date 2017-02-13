@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core;
 
@@ -498,6 +499,20 @@ namespace CoreUnitTest
             //assert
             Assert.AreEqual(builder.GetResult().ingredientsList.Count, 1);
             Assert.IsTrue(builder.GetResult().ingredientsList.Contains("garlic"));
+        }
+
+        [TestMethod]
+        public void ShouldChengeLastModifiedDate()
+        {
+            //Arrange
+            var currentDate = builder.GetResult().lastModified;
+
+            //act
+            Thread.Sleep(3); //Teast is running so fast that dateTime actually not changed
+            builder.SetDescription("Desc");
+
+            //assert
+            Assert.AreNotEqual(currentDate, builder.GetResult().lastModified);
         }
     }
 }

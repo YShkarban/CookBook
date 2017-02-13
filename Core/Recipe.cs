@@ -15,6 +15,7 @@ namespace Core
         public MealType mealType { get; set; }
         public DishType dishType { get; set; }
         public CookingStyle cookingStyle { get; set; }
+        public DateTime lastModified { get; private set; }
 
         public uint yield { get; set; }
 
@@ -30,7 +31,7 @@ namespace Core
 
         public Recipe()
         {
-
+            RecipeModified();
         }
 
         public override bool Equals(object obj)
@@ -76,6 +77,11 @@ namespace Core
                 return true;
             }
             return false;
+        }
+
+        public void RecipeModified()
+        {
+            lastModified = DateTime.Now;
         }
     }
 }

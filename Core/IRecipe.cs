@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Core
 {
@@ -30,5 +31,7 @@ namespace Core
         //TODO: Change type to URL, URI or UriBuilder
         string source { get; set; }
         string videoUrl { get; set; }
+
+        DateTime lastModified { get; }
     }
 }
