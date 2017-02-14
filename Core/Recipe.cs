@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Core
 {
     //TODO: Create test for this class
-    public class Recipe: IRecipe
+    internal class Recipe: IRecipe
     {
         public string title { get; set; }
         public Complexity complexity { get; set; }

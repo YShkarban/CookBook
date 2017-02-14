@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Core
 {
     //TODO: Create classes for non primitive types and change type from string to created classes
-    public interface IRecipe
+    internal interface IRecipe
     {
         string title { get; set; }
         Complexity complexity { get; set; }

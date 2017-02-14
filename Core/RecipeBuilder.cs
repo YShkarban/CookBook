@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class RecipeBuilder : IRecipeBuilder
+    internal class RecipeBuilder : IRecipeBuilder
     {
         private Recipe _recipe;
 

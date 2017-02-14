@@ -4,7 +4,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core;
 
-namespace CoreUnitTest
+namespace Core.UnitTest
 {
     [TestClass]
     public class RecipeBuilderTest

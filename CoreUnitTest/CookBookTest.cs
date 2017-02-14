@@ -1,9 +1,8 @@
 ﻿using System;
 using System.CodeDom;
-using Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CoreUnitTest
+namespace Core
 {
     [TestClass]
     public class CookBookTest

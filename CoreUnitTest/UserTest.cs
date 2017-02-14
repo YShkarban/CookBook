@@ -2,7 +2,7 @@
 using Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CoreUnitTest
+namespace Core.UnitTest
 {
     [TestClass]
     public class UserTest

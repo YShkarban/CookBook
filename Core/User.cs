@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class User
+    internal class User
     {
         public CookBook CookBookInstance { get; private set; }
 

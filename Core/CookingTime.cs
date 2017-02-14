@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class CookingTime
+    internal class CookingTime
     {
         public int Minutes { get; private set; }
         public int Hours { get; private set; }

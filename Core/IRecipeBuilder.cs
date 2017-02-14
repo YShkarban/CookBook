@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public interface IRecipeBuilder
+    internal interface IRecipeBuilder
     {
         void SetTitle(string title);
 
