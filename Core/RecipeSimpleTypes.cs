@@ -10,7 +10,7 @@ namespace Core
 
     internal enum Rating { NotAssigned, Deplorable, Tasty, Delicious };
 
-    internal enum MealType { Breakfast = 1, Lunch, Dinner, Desserts};
+    internal enum MealType { Breakfast = 1, Lunch, Dinner, Dessert};
 
     internal enum DishType { Soup, Salads, FastFood };
 

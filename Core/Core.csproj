@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MySQL\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +47,12 @@
     <Compile Include="ActionRetriever.cs" />
     <Compile Include="CookBook.cs" />
     <Compile Include="CookingTime.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="IActionCookBook.cs" />
     <Compile Include="IActionRecipe.cs" />
     <Compile Include="IActionUser.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="IRecipe.cs" />
     <Compile Include="IRecipeBuilder.cs" />
     <Compile Include="Recipe.cs" />
