@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public static class Database
+    internal static class Database
     {
         private static MySqlConnection connection = new MySqlConnection("Server=10.7.167.72;Database=cookbook;UId=cookbookUser;Password=cookbookpass;");
 
-        public static void OpenConnection()
+        private static void OpenConnection()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace Core
             }
         }
 
-        public static void CloseConnection()
+        private static void CloseConnection()
         {
             try
             {
@@ -37,27 +37,29 @@ namespace Core
             }
         }
 
-        public static IDataReader Execute(string query)
+        internal static Dictionary<string, object> Execute(string query)
         {
             try
             {
                 MySqlCommand command = new MySqlCommand(query, connection);
                 OpenConnection();
-                IDataReader reader = command.ExecuteReader();
 
-                //reader.
-
-
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    if(reader.Read())
+                        return Enumerable.Range(0, reader.FieldCount).ToDictionary(reader.GetName, reader.GetValue);
+                    return null;
+                }
             }
             catch (Exception e)
             {
-                
+                return null;
             }
             finally 
             {
                 CloseConnection();
             }
-            return null;
+            
         }
     }
 }
