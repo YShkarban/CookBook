@@ -23,10 +23,8 @@ namespace Core
         void SetCookingStyle(CookingStyle style);
 
         void SetYield(uint yield);
-        
-        void SetCookingTime(CookingTime time);
 
-        void SetPreparationTime(CookingTime time);
+        void SetCookingTime(uint minutes);
 
         void SetIngridientList(List<string> list);
 

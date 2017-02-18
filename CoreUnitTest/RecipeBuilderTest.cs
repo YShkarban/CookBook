@@ -24,8 +24,7 @@ namespace Core.UnitTest
             defaultRecipe.complexity = Complexity.NotAssigned;
             defaultRecipe.rating = Rating.NotAssigned;
             defaultRecipe.yield = 1;
-            defaultRecipe.cookingTime = defaultRecipe.preparationTime =
-                defaultRecipe.totalTime = new CookingTime();
+            defaultRecipe.cookingTime = 0;
 
             defaultRecipe.ingredientsList = new System.Collections.Generic.List<string>();
             defaultRecipe.description = "";
@@ -98,62 +97,6 @@ namespace Core.UnitTest
 
             //assert
             Assert.AreEqual(expectedResult, result);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ShouldCookingTypeThrowException()
-        {
-            //act
-            builder.SetCookingTime(null);
-        }
-
-        [TestMethod]
-        public void ShouldSetCookingTime()
-        {
-            //Arrange            
-            expectedResult.totalTime =  expectedResult.cookingTime = new CookingTime(5);
-
-            //act
-            //hack
-            builder.GetResult().preparationTime = null;
-            builder.SetCookingTime(new CookingTime(5));
-            result = builder.GetResult();
-
-            //assert
-            Assert.AreEqual(expectedResult.totalTime, result.totalTime);
-            Assert.AreEqual(expectedResult.cookingTime, result.cookingTime);
-
-            //becaouse of above hack
-            Assert.AreEqual(null, result.preparationTime);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ShouldPreparationTypeThrowException()
-        {
-            //act
-            builder.SetPreparationTime(null);
-        }
-
-        [TestMethod]
-        public void ShouldSetPreparationTime()
-        {
-            //Arrange            
-            expectedResult.totalTime = expectedResult.preparationTime = new CookingTime(5);
-
-            //act
-            //hack
-            builder.GetResult().cookingTime = null;
-            builder.SetPreparationTime(new CookingTime(5));
-            result = builder.GetResult();
-
-            //assert
-            Assert.AreEqual(expectedResult.totalTime, result.totalTime);
-            Assert.AreEqual(expectedResult.preparationTime, result.preparationTime);
-
-            //becaouse of above hack
-            Assert.AreEqual(null, result.cookingTime);
         }
 
         [TestMethod]
@@ -332,9 +275,7 @@ namespace Core.UnitTest
             expectedResult.title = "Steak"; 
             expectedResult.complexity = Complexity.Hard;
             expectedResult.cookingStyle = CookingStyle.Meat;
-            expectedResult.cookingTime = new CookingTime(10);
-            expectedResult.preparationTime = new CookingTime(10);
-            expectedResult.totalTime = expectedResult.cookingTime + expectedResult.preparationTime;
+            expectedResult.cookingTime = 5;
             expectedResult.description = "Delicious beef steak with papper sause";
             expectedResult.dishType = DishType.FastFood;
             expectedResult.ingredientsList = new List<string>();
@@ -348,8 +289,7 @@ namespace Core.UnitTest
             builder.SetTitle("Steak");
             builder.SetComplexity(Complexity.Hard);
             builder.SetCookingStyle(CookingStyle.Meat);
-            builder.SetPreparationTime(new CookingTime(10));
-            builder.SetCookingTime(new CookingTime(10));
+            builder.SetCookingTime(5);
             builder.SetDescription("Delicious beef steak with papper sause");
             builder.SetDishType(DishType.FastFood);
             List<string> ingridients = new List<string>();

@@ -9,14 +9,12 @@ using System.Data.Entity;
 
 namespace Core.Model
 {
-    //TODO: Create test for this class
     [Table("Recipes")]
     public class Recipe: IRecipe
     {
         [Key]
         public int RecipeID { get; set; }
 
-        public CookBook CookBookInstance { get; private set; }
         public string title { get; set; }
         public Complexity complexity { get; set; }
         public Rating rating { get; set; }
@@ -27,12 +25,8 @@ namespace Core.Model
 
         public uint yield { get; set; }
 
-        public virtual CookingTime cookingTime { get; set; }
-        
-        public virtual CookingTime preparationTime { get; set; }
-        
-        public virtual CookingTime totalTime { get; set; }
-        
+        //cooking time in minutes
+        public uint cookingTime { get; set; }
 
         public List<string> ingredientsList { get; set; }
         public string description { get; set; }
@@ -40,6 +34,7 @@ namespace Core.Model
         public string source { get; set; }
         public string videoUrl { get; set; }
 
+        [Required]
         public int CookBookRefId { get; set; }
 
         [ForeignKey("CookBookRefId")]
@@ -61,10 +56,8 @@ namespace Core.Model
                     || cookingStyle != other.cookingStyle
                     || dishType != other.dishType
                     || mealType != other.mealType
-                    || preparationTime != other.preparationTime
                     || rating != other.rating
                     || source != other.source
-                    || totalTime != other.totalTime
                     || videoUrl != other.videoUrl
                     || yield != other.yield
                     || cookingTime != other.cookingTime
@@ -99,5 +92,32 @@ namespace Core.Model
         {
             lastModified = DateTime.Now;
         }
+
+        public string GetTime()
+        {
+            uint hours = 0;
+            uint minutes = cookingTime;
+            while (minutes >= 60)
+            {
+                hours++;
+                minutes -= 60;
+            }
+
+            if (hours > 0 && minutes > 0)
+            {
+                return hours + "h " + minutes + "m";
+            }
+            else if (hours == 0 && minutes > 0)
+            {
+                return minutes + "m";
+            }
+            else if (hours > 0 && minutes == 0)
+            {
+                return hours + "h";
+            }
+
+            return "";
+        }
+    
     }
 }

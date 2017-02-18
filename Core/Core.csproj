@@ -69,7 +69,6 @@
     <Compile Include="IRecipe.cs" />
     <Compile Include="IRecipeBuilder.cs" />
     <Compile Include="Model\CookBook.cs" />
-    <Compile Include="Model\CookingTime.cs" />
     <Compile Include="Model\Recipe.cs" />
     <Compile Include="Model\RecipeSimpleTypes.cs" />
     <Compile Include="Model\User.cs" />

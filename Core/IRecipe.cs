@@ -20,12 +20,8 @@ namespace Core
         CookingStyle cookingStyle { get; set; } //vegan, vegeterian, bbq, snacks, diabetic
 
         uint yield { get; set; }
-       
-        /*
-        CookingTime cookingTime { get; set; }
-        CookingTime preparationTime { get; set; }
-        CookingTime totalTime { get; set; } // cookingTime + preparationTime
-        */
+    
+        uint cookingTime { get; set; }
 
         //TODO: Create class Ingridient
         List<string> ingredientsList { get; set; }
