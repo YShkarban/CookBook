@@ -20,8 +20,10 @@ namespace Core.Model
         public virtual User User { get; set; }
         public ICollection<Recipe> Recipes { get; private set; }
 
-        public CookBook()
+        public CookBook(User user)
         {
+            this.User = user;
+            user.CookBook = this;
             Recipes = new List<Recipe>();
         }
         

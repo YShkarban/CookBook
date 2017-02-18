@@ -61,7 +61,8 @@ namespace Core.Model
                     || videoUrl != other.videoUrl
                     || yield != other.yield
                     || cookingTime != other.cookingTime
-                    || description != other.description)
+                    || description != other.description
+                    || CookBookRefId != CookBookRefId)
                 {
                     return false;
                 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Model;
-using Model;
 
 namespace Core
 {
@@ -13,10 +12,11 @@ namespace Core
     {
         private Recipe _recipe;
 
-        public RecipeBuilder(string title)
+        public RecipeBuilder(string title, CookBook cookBook)
         {
             _recipe = new Recipe();
             SetTitle(title);
+            SetCookBook(cookBook);
 
             //Default options
             SetComplexity(Complexity.NotAssigned);
@@ -31,6 +31,12 @@ namespace Core
         public Recipe GetResult()
         {
             return _recipe;
+        }
+
+        private void SetCookBook(CookBook cookBook)
+        {
+            _recipe.CookBook = cookBook;
+            _recipe.RecipeModified();
         }
 
         public void SetComplexity(Complexity complexity)

@@ -19,7 +19,7 @@ namespace Core.Model
         public User()
         {
             this.Password = "pass";
-            CookBook = new CookBook();
+            CookBook = new CookBook(this);
         }
     }
 }
