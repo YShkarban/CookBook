@@ -37,19 +37,23 @@ namespace Core
             }
         }
 
-        internal static Dictionary<string, object> Execute(string query)
+        //Return list of read elements
+        internal static List<Dictionary<string, object>> Read(string query)
         {
             try
             {
                 MySqlCommand command = new MySqlCommand(query, connection);
                 OpenConnection();
 
+                List<Dictionary<string, object>> readItems = new List<Dictionary<string, object>>();
                 using (IDataReader reader = command.ExecuteReader())
                 {
-                    if(reader.Read())
-                        return Enumerable.Range(0, reader.FieldCount).ToDictionary(reader.GetName, reader.GetValue);
-                    return null;
+                    while (reader.Read())
+                        readItems.Add(Enumerable.Range(0, reader.FieldCount).ToDictionary(reader.GetName, reader.GetValue));
                 }
+                if (readItems.Count != 0)
+                    return readItems;
+                return null;
             }
             catch (Exception e)
             {
@@ -59,7 +63,25 @@ namespace Core
             {
                 CloseConnection();
             }
-            
+        }
+
+        //Return count of affected rows
+        internal static int Write(string query)
+        {
+            try
+            {
+                MySqlCommand command = new MySqlCommand(query, connection);
+                OpenConnection();
+                return command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return 0;
         }
     }
 }
