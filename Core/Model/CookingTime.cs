@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Core.Model
 {
+    [Table("CookingTimes")]
     public class CookingTime
     {
-        public Recipe Recipe { get; private set; }
+        [Key, ForeignKey("Recipe")]
+        public int CookingTimeID { get; set; }
+        public virtual Recipe Recipe { get; set; }
         public int Minutes { get; private set; }
         public int Hours { get; private set; }
 
@@ -43,7 +49,9 @@ namespace Core.Model
         {
             var totalMinutes = c1.Minutes + c2.Minutes;
             var totalHours = c1.Hours + c2.Hours;
-            return new CookingTime(totalMinutes, totalHours);
+            var time =  new CookingTime(totalMinutes, totalHours);
+            //time.Recipe = c1.Recipe;
+            return time;
         }
       
         public override string ToString()

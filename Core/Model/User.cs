@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Model
 {
+    [Table("Users")]
     public class User
     {
-        public string Username { get; private set; }
-        private string Password { get; set; }
-        public string Name { get; private set; }
-        public string SurName { get; private set; }
-        public CookBook CookBookInstance { get; private set; }
+        [Key]
+        public int UserID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; private set; }
+        public string Name { get; set; }
+        public string SurName { get; set; }
 
-        public  User()
+        [Required]
+        public virtual CookBook CookBook { get; set; }
+
+        public User()
         {
-            CookBookInstance = new CookBook();
+            this.Password = "pass";
+            CookBook = new CookBook();
         }
     }
 }

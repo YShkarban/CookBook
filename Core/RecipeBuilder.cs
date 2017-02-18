@@ -22,8 +22,8 @@ namespace Core
             SetComplexity(Complexity.NotAssigned);
             SetRating(Rating.NotAssigned);
             SetYield(1);
-            SetCookingTime(new CookingTime());
-            SetPreparationTime(new CookingTime());
+            SetCookingTime(new CookingTime { Recipe = this._recipe});
+             SetPreparationTime(new CookingTime { Recipe = this._recipe});
             SetIngridientList(new List<string>());
             SetDescription("");
             _recipe.RecipeModified();
@@ -45,11 +45,11 @@ namespace Core
             _recipe.cookingStyle = style;
             _recipe.RecipeModified();
         }
-
+        
         public void SetCookingTime(CookingTime time)
         {
             if (time == null) throw new ArgumentNullException();
-
+            
             _recipe.cookingTime = time;
             if (_recipe.preparationTime == null)
             {
@@ -59,9 +59,10 @@ namespace Core
             {
                 _recipe.totalTime = _recipe.cookingTime + _recipe.preparationTime;
             }
+            _recipe.totalTime.Recipe = this._recipe;
             _recipe.RecipeModified();
         }
-
+        
         public void SetDescription(string description)
         {
             if (description == null) throw new ArgumentNullException();
@@ -88,21 +89,24 @@ namespace Core
             _recipe.RecipeModified();
         }
 
+        
         public void SetPreparationTime(CookingTime time)
         {
             if (time == null) throw new ArgumentNullException();
-
+            
             _recipe.preparationTime = time;
             if (_recipe.cookingTime == null)
             {
-                _recipe.totalTime = time;
+               _recipe.totalTime = time;
             }
             else
             {
                 _recipe.totalTime = _recipe.cookingTime + _recipe.preparationTime;
             }
+            _recipe.totalTime.Recipe = this._recipe;
             _recipe.RecipeModified();
         }
+        
 
         public void SetRating(Rating rating)
         {

@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Core.Model
 {
     //TODO: Create test for this class
+    [Table("Recipes")]
     public class Recipe: IRecipe
     {
+        [Key]
+        public int RecipeID { get; set; }
+
         public CookBook CookBookInstance { get; private set; }
         public string title { get; set; }
         public Complexity complexity { get; set; }
@@ -20,9 +27,12 @@ namespace Core.Model
 
         public uint yield { get; set; }
 
-        public CookingTime cookingTime { get; set; }
-        public CookingTime preparationTime { get; set; }
-        public CookingTime totalTime { get; set; }
+        public virtual CookingTime cookingTime { get; set; }
+        
+        public virtual CookingTime preparationTime { get; set; }
+        
+        public virtual CookingTime totalTime { get; set; }
+        
 
         public List<string> ingredientsList { get; set; }
         public string description { get; set; }
@@ -30,11 +40,16 @@ namespace Core.Model
         public string source { get; set; }
         public string videoUrl { get; set; }
 
+        public int CookBookRefId { get; set; }
+
+        [ForeignKey("CookBookRefId")]
+        public virtual CookBook CookBook { get; set; }
+
         public Recipe()
         {
             RecipeModified();
         }
-
+        
         public override bool Equals(object obj)
         {
             if (obj != null && obj is Recipe)
@@ -79,7 +94,7 @@ namespace Core.Model
             }
             return false;
         }
-
+        
         public void RecipeModified()
         {
             lastModified = DateTime.Now;

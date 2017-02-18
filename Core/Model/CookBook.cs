@@ -1,31 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Core.Model
 {
+    [Table("CookBooks")]
     public class CookBook
     {
-        public User Owner { get; private set; }
-        public List<Recipe> ListOfRecipes { get; private set; }
+        [Key, ForeignKey("User")]
+        public int CookBookID { get; set; }
+
+        [Required]
+        public virtual User User { get; set; }
+        public ICollection<Recipe> Recipes { get; private set; }
 
         public CookBook()
         {
-            ListOfRecipes = new List<Recipe>();
+            Recipes = new List<Recipe>();
         }
-
+        
         public bool AddRecipe(Recipe recipe)
         {
             try
             {
-                if (ListOfRecipes.Contains(recipe))
+                if (Recipes.Contains(recipe))
                 {
                     throw new ArgumentException("This recipe already exists on the list");
                 }
-                ListOfRecipes.Add(recipe);
+                Recipes.Add(recipe);
             }
             catch(Exception e)
             {
@@ -39,11 +47,11 @@ namespace Core.Model
         {
             try
             {
-                if(!ListOfRecipes.Contains(recipe))
+                if(!Recipes.Contains(recipe))
                 {
                     throw new ArgumentException("Recipe does not exists on the list");
                 }
-                ListOfRecipes.Remove(recipe);
+                Recipes.Remove(recipe);
             }
             catch (Exception e)
             {
