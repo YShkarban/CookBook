@@ -64,11 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionRetriever.cs" />
-    <Compile Include="IAction.cs" />
-    <Compile Include="IActionCookBook.cs" />
-    <Compile Include="IActionRecipe.cs" />
-    <Compile Include="IActionUser.cs" />
     <Compile Include="IRecipe.cs" />
     <Compile Include="IRecipeBuilder.cs" />
     <Compile Include="Model\Recipe.cs" />
