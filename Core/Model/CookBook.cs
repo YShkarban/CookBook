@@ -22,9 +22,19 @@ namespace Core.Model
 
         public CookBook(User user)
         {
+            if (user == null)
+                throw new ArgumentNullException();
             this.User = user;
-            user.CookBook = this;
+            user.SetCookBook(this);
             Recipes = new List<Recipe>();
+        }
+
+        public void SetUser(User user)
+        {
+            if(user == null)
+                throw new ArgumentNullException();
+            this.User = user;
+            this.User.SetCookBook(this);
         }
         
         public bool AddRecipe(Recipe recipe)

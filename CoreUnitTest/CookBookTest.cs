@@ -16,14 +16,14 @@ namespace Core
         public void CreateDefault()
         {
             //Arrange 
-            RecipeBuilder builder = new RecipeBuilder("DefaultRecipe", new CookBook(new User()));
+            RecipeBuilder builder = new RecipeBuilder("DefaultRecipe", new CookBook(new User("test", "test")));
 
             _recipe1 = builder.GetResult();
 
             builder.SetTitle("CustomRecipe");
             _recipe2 = builder.GetResult();
 
-            _cookBook = new CookBook(new User());
+            _cookBook = new CookBook(new User("test", "test"));
             _cookBook.Recipes.Add(_recipe1);
             _cookBook.Recipes.Add(_recipe2);
 
@@ -35,7 +35,7 @@ namespace Core
         {
             //Arrange 
             var recipesCount = _cookBook.Recipes.Count;
-            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User()));
+            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User("test", "test")));
 
             //Act
             var _recipe3 = builder.GetResult();
@@ -81,7 +81,7 @@ namespace Core
         {
             //Arrange 
             var recipesCount = _cookBook.Recipes.Count;
-            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User()));
+            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User("test", "test")));
 
             //Act
             var _recipe3 = builder.GetResult();

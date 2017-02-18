@@ -15,7 +15,7 @@ namespace Core.UnitTest
             User user;
             
             //Act
-            user = new User();
+            user = new User("test", "test");
 
             //Assert
             Assert.IsNotNull(user);
@@ -28,7 +28,7 @@ namespace Core.UnitTest
             User user;
             
             //Act
-            user = new User();
+            user = new User("test", "test");
 
             //Assert
             Assert.IsNotNull(user.CookBook);

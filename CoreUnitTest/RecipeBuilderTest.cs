@@ -30,7 +30,7 @@ namespace Core.UnitTest
             defaultRecipe.description = "";
 
             expectedResult = defaultRecipe;
-            builder = new RecipeBuilder("Sandwitch with salmon", new CookBook(new User()));
+            builder = new RecipeBuilder("Sandwitch with salmon", new CookBook(new User("test", "test")));
         }
 
         [TestMethod]
@@ -346,7 +346,7 @@ namespace Core.UnitTest
         public void ShouldNotBeEqualIFIsNotRecipe()
         {
             //Arrange
-            User user = new User();
+            User user = new User("test", "test");
 
             //act
             result = builder.GetResult();
