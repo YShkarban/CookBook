@@ -15,7 +15,7 @@ namespace Core.Model
         public string SurName { get; set; }
 
         [Required]
-        public virtual CookBook CookBook { get; private set; }
+        public virtual CookBook CookBook { get; set; }
 
         public User(string Username, string Password)
         {
