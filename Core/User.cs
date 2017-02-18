@@ -6,23 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    internal class User: IDatabase
+    internal class User
     {
         public CookBook CookBookInstance { get; private set; }
 
         public  User()
         {
             CookBookInstance = new CookBook();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Read()
-        {
-            throw new NotImplementedException();
         }
     }
 }

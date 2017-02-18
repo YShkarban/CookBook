@@ -52,7 +52,6 @@
     <Compile Include="IActionCookBook.cs" />
     <Compile Include="IActionRecipe.cs" />
     <Compile Include="IActionUser.cs" />
-    <Compile Include="IDatabase.cs" />
     <Compile Include="IRecipe.cs" />
     <Compile Include="IRecipeBuilder.cs" />
     <Compile Include="Recipe.cs" />
