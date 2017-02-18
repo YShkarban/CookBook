@@ -10,7 +10,7 @@ using System.Data.Entity;
 namespace Core.Model
 {
     [Table("Recipes")]
-    public class Recipe: IRecipe
+    public class Recipe
     {
         [Key]
         public int RecipeID { get; set; }
