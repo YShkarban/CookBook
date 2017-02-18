@@ -19,37 +19,20 @@ namespace DesktopApp
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    /// to do messege when not apply pass or login(textfieldchange;errorhide)
     public partial class LoginWindow : Window
     {
         
-
         public LoginWindow()
         {
-           
             InitializeComponent();
 
-        }
+            SignIn signIn = new SignIn();
+            LoginFrame.NavigationService.Navigate(signIn);
+        }        
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void myFrame_ContentRendered(object sender, EventArgs e)
         {
-            
-        }
-
-        private void passwordBox_KeyDown(object sender, KeyEventArgs e)
-        {     
-        }
-
-        private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.passwordBox.Password == "123" && this.textBoxLogin.Text == "xyz")
-            {
-                //Do the stuff; 
-            }
-            else
-            { 
-                //Show error
-            }     
-        }
+            LoginFrame.NavigationUIVisibility = System.Windows.Navigation.NavigationUIVisibility.Hidden;
+        }        
     }
 }
