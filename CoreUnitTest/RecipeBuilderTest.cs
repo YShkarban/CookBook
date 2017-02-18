@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core;
+using Core.Model;
 
 namespace Core.UnitTest
 {

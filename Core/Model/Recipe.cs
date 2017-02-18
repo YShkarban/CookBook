@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
     //TODO: Create test for this class
-    internal class Recipe: IRecipe
+    public class Recipe: IRecipe
     {
+        public CookBook CookBookInstance { get; private set; }
         public string title { get; set; }
         public Complexity complexity { get; set; }
         public Rating rating { get; set; }

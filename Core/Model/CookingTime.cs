@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
-    internal class CookingTime
+    public class CookingTime
     {
+        public Recipe Recipe { get; private set; }
         public int Minutes { get; private set; }
         public int Hours { get; private set; }
 

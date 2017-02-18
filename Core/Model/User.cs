@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
-    internal class User
+    public class User
     {
+        public string Username { get; private set; }
+        private string Password { get; set; }
+        public string Name { get; private set; }
+        public string SurName { get; private set; }
         public CookBook CookBookInstance { get; private set; }
 
         public  User()

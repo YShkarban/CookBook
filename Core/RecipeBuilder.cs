@@ -4,10 +4,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Model;
+using Model;
 
 namespace Core
 {
-    internal class RecipeBuilder : IRecipeBuilder
+    public class RecipeBuilder : IRecipeBuilder
     {
         private Recipe _recipe;
 

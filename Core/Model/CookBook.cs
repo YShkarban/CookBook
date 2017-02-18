@@ -5,10 +5,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
-    internal class CookBook
+    public class CookBook
     {
+        public User Owner { get; private set; }
         public List<Recipe> ListOfRecipes { get; private set; }
 
         public CookBook()

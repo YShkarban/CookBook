@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom;
+using Core.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Core
