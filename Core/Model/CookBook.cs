@@ -36,7 +36,6 @@ namespace Core.Model
             if(user == null)
                 throw new ArgumentNullException();
             this.User = user;
-            this.User.SetCookBook(this);
         }
         
         public bool AddRecipe(Recipe recipe)

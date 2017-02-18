@@ -39,7 +39,6 @@ namespace Core.Model
             if (cookBook != null)
             {
                 this.CookBook = cookBook;
-                this.CookBook.SetUser(this);
             }
         }
     }
