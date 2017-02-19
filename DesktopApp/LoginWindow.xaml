@@ -7,16 +7,18 @@
         mc:Ignorable="d"
         Title="LoginWindow" 
         ResizeMode="NoResize" Height="400" Width="300"
-        WindowStyle="None">
-    <Grid>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="60,268,60,0" VerticalAlignment="Top" Height="25" Background="#FFEAEAEA" BorderThickness="0" KeyDown="passwordBox_KeyDown"/>
-        <Label x:Name="LabelPassword" HorizontalContentAlignment="Center" Content="Password" FontSize="12" Height="25" Margin="69,243,68,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxLogin" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"  Height="25" Margin="60,204,60,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderThickness="0" Background="#FFEAEAEA" TextChanged="textBox_TextChanged"/>
-        <Label x:Name="LabelLogin" HorizontalContentAlignment="Center" Content="Login" FontSize="12" Height="26" Margin="69,178,68,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelTitle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="CookBook" HorizontalAlignment="Left" FontSize="35" FontStyle="Italic" Height="78" Margin="50,33,0,0" VerticalAlignment="Top" Width="205" Background="#00000000" FontFamily="Lucida Calligraphy"/>
-        <Label x:Name="LabelWhatToDo" HorizontalContentAlignment="Center" Content="You must write your login and password" HorizontalAlignment="Stretch" Height="24" FontSize="10" Margin="50,133,50,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,1.963"/>
-        <Button x:Name="ButtonSubmit" Content="Button" HorizontalAlignment="Left" Height="32" Margin="60,320,0,0" VerticalAlignment="Top" Width="180" Click="ButtonSubmit_Click"/>
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Grid >
+
+
+
+        <Frame x:Name="LoginFrame" ContentRendered="myFrame_ContentRendered" NavigationUIVisibility="Hidden" Content="" Visibility="Visible" Focusable="False"/>
+
 
 
     </Grid>
+
+
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,7 @@ namespace DesktopApp
         public MainWindow()
         {
             InitializeComponent();
-
-            LoginWindow LoginWindow = new LoginWindow();
-            LoginWindow.Show();
-
+            
         }
-
     }
 }
