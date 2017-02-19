@@ -12,11 +12,11 @@ namespace Core
     {
         private Recipe _recipe;
 
-        public RecipeBuilder(string title, CookBook cookBook)
+        public RecipeBuilder(string title, User user)
         {
             _recipe = new Recipe();
             SetTitle(title);
-            SetCookBook(cookBook);
+            SetUser(user);
 
             //Default options
             SetComplexity(Complexity.NotAssigned);
@@ -33,9 +33,9 @@ namespace Core
             return _recipe;
         }
 
-        private void SetCookBook(CookBook cookBook)
+        private void SetUser(User user)
         {
-            _recipe.CookBook = cookBook;
+            _recipe.user = user;
             _recipe.RecipeModified();
         }
 

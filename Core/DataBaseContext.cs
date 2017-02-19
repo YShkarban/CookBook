@@ -16,11 +16,9 @@ namespace Core
         {
             
         }
-        
-        public DbSet<CookBook> CookBooks { get; set; }
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<User> Users { get; set; }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
 
         private static MySqlConnection connection = new MySqlConnection("Server=10.7.167.72;Database=cookbook;UId=cookbookUser;Password=cookbookpass;");
 

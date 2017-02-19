@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,32 +15,49 @@ namespace Core.Model
         public string Name { get; set; }
         public string SurName { get; set; }
 
-        [Required]
-        public virtual CookBook CookBook { get; set; }
+        public ICollection<Recipe> Recipes { get; private set; }
 
         public User(string Username, string Password)
         {
             this.Username = Username;
             this.Password = Password;
-            CookBook = new CookBook(this);
+            Recipes = new List<Recipe>();
         }
 
-        public User(string Username, string Password, CookBook cookbook)
+        public bool AddRecipe(Recipe recipe)
         {
-            if(cookbook == null)
-                throw new ArgumentNullException();
-            this.Username = Username;
-            this.Password = Password;
-            CookBook = cookbook;
-            cookbook.SetUser(this);
-        }
-
-        public void SetCookBook(CookBook cookBook)
-        {
-            if (cookBook != null)
+            try
             {
-                this.CookBook = cookBook;
+                if (Recipes.Contains(recipe))
+                {
+                    throw new ArgumentException("This recipe already exists on the list");
+                }
+                Recipes.Add(recipe);
             }
+            catch (Exception e)
+            {
+                //TODO: Exaception message to log file
+                return false;
+            }
+            return true;
+        }
+
+        public bool RemoveRecipe(Recipe recipe)
+        {
+            try
+            {
+                if (!Recipes.Contains(recipe))
+                {
+                    throw new ArgumentException("Recipe does not exists on the list");
+                }
+                Recipes.Remove(recipe);
+            }
+            catch (Exception e)
+            {
+                //TODO: Exaception message to log file
+                return false;
+            }
+            return true;
         }
     }
 }

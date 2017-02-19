@@ -10,22 +10,22 @@ namespace Core
     {
         private Recipe _recipe1;
         private Recipe _recipe2;
-        private CookBook _cookBook;
+        private User _user;
 
         [TestInitialize()]
         public void CreateDefault()
         {
             //Arrange 
-            RecipeBuilder builder = new RecipeBuilder("DefaultRecipe", new CookBook(new User("test", "test")));
+            RecipeBuilder builder = new RecipeBuilder("DefaultRecipe", new User("test", "test"));
 
             _recipe1 = builder.GetResult();
 
             builder.SetTitle("CustomRecipe");
             _recipe2 = builder.GetResult();
 
-            _cookBook = new CookBook(new User("test", "test"));
-            _cookBook.Recipes.Add(_recipe1);
-            _cookBook.Recipes.Add(_recipe2);
+            _user = new User("test", "test");
+            _user.Recipes.Add(_recipe1);
+            _user.Recipes.Add(_recipe2);
 
             //Assert
         }
@@ -34,15 +34,15 @@ namespace Core
         public void ShouldAddRecipe()
         {
             //Arrange 
-            var recipesCount = _cookBook.Recipes.Count;
-            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User("test", "test")));
+            var recipesCount = _user.Recipes.Count;
+            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new User("test", "test"));
 
             //Act
             var _recipe3 = builder.GetResult();
-            var result = _cookBook.AddRecipe(_recipe3);
+            var result = _user.AddRecipe(_recipe3);
 
             //Assert
-            Assert.AreEqual(recipesCount+1, _cookBook.Recipes.Count);
+            Assert.AreEqual(recipesCount+1, _user.Recipes.Count);
             Assert.IsTrue(result);
         }
 
@@ -50,13 +50,13 @@ namespace Core
         public void ShouldNotAddRecipe()
         {
             //Arrange 
-            var recipesCount = _cookBook.Recipes.Count;
+            var recipesCount = _user.Recipes.Count;
 
             //Act
-            var result = _cookBook.AddRecipe(_recipe1);
+            var result = _user.AddRecipe(_recipe1);
 
             //Assert
-            Assert.AreEqual(recipesCount, _cookBook.Recipes.Count);
+            Assert.AreEqual(recipesCount, _user.Recipes.Count);
             Assert.IsFalse(result);
         }
 
@@ -66,13 +66,13 @@ namespace Core
         public void ShouldRemoveRecipe()
         {
             //Arrange 
-            var recipesCount = _cookBook.Recipes.Count;
+            var recipesCount = _user.Recipes.Count;
 
             //Act
-            var result = _cookBook.RemoveRecipe(_recipe2);
+            var result = _user.RemoveRecipe(_recipe2);
 
             //Assert
-            Assert.AreEqual(recipesCount -1, _cookBook.Recipes.Count);
+            Assert.AreEqual(recipesCount -1, _user.Recipes.Count);
             Assert.IsTrue(result);
         }
 
@@ -80,15 +80,15 @@ namespace Core
         public void ShouldNotRemoveRecipe()
         {
             //Arrange 
-            var recipesCount = _cookBook.Recipes.Count;
-            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new CookBook(new User("test", "test")));
+            var recipesCount = _user.Recipes.Count;
+            RecipeBuilder builder = new RecipeBuilder("Sandwitch", new User("test", "test"));
 
             //Act
             var _recipe3 = builder.GetResult();
-            var result = _cookBook.RemoveRecipe(_recipe3);
+            var result = _user.RemoveRecipe(_recipe3);
 
             //Assert
-            Assert.AreEqual(recipesCount, _cookBook.Recipes.Count);
+            Assert.AreEqual(recipesCount, _user.Recipes.Count);
             Assert.IsFalse(result);
             
         }

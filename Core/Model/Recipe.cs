@@ -35,10 +35,10 @@ namespace Core.Model
         public string videoUrl { get; set; }
 
         [Required]
-        public int CookBookRefId { get; set; }
+        public int UserRefId { get; set; }
 
-        [ForeignKey("CookBookRefId")]
-        public virtual CookBook CookBook { get; set; }
+        [ForeignKey("UserRefId")]
+        public virtual User user { get; set; }
 
         public Recipe()
         {
@@ -62,7 +62,7 @@ namespace Core.Model
                     || yield != other.yield
                     || cookingTime != other.cookingTime
                     || description != other.description
-                    || CookBookRefId != CookBookRefId)
+                    || UserRefId != UserRefId)
                 {
                     return false;
                 }

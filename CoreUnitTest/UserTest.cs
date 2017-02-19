@@ -31,7 +31,7 @@ namespace Core.UnitTest
             user = new User("test", "test");
 
             //Assert
-            Assert.IsNotNull(user.CookBook);
+            Assert.IsNotNull(user.Recipes);
         }
     }
 }

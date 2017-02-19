@@ -30,7 +30,7 @@ namespace Core.UnitTest
             defaultRecipe.description = "";
 
             expectedResult = defaultRecipe;
-            builder = new RecipeBuilder("Sandwitch with salmon", new CookBook(new User("test", "test")));
+            builder = new RecipeBuilder("Sandwitch with salmon", new User("test", "test"));
         }
 
         [TestMethod]
